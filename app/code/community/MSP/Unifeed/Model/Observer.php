@@ -20,6 +20,9 @@
 
 class MSP_Unifeed_Model_Observer
 {
+    const XML_UNIFEED_GENERAL_ENABLED = "msp_unifeed/general/enabled";
+    const XML_UNIFEED_GENERAL_DAILY_REBUILD = "msp_unifeed/general/daily-rebuild";
+
     public function rebuildCatalog()
     {
         if (!Mage::getStoreConfig(self::XML_UNIFEED_GENERAL_ENABLED))
