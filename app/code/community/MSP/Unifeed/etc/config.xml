@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@idealiagroup.com so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_Unifeed
+ * @copyright  Copyright (c) 2014 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <MSP_Unifeed>
+            <version>1.0.0</version>
+        </MSP_Unifeed>
+    </modules>
+
+    <global>
+        <models>
+            <msp_unifeed>
+                <class>MSP_Unifeed_Model</class>
+                <resourceModel>msp_unifeed_resource</resourceModel>
+            </msp_unifeed>
+
+            <msp_unifeed_resource>
+                <class>MSP_Unifeed_Model_Resource</class>
+                <entities>
+                    <feed>
+                        <table>msp_unifeed_feed</table>
+                    </feed>
+                    <template>
+                        <table>msp_unifeed_template</table>
+                    </template>
+                </entities>
+            </msp_unifeed_resource>
+            <catalog_resource>
+                <rewrite>
+                    <eav_mysql4_product_collection>MSP_Unifeed_Model_Resource_Catalog_Eav_Mysql4_Product_Collection
+                    </eav_mysql4_product_collection>
+                </rewrite>
+            </catalog_resource>
+        </models>
+
+        <blocks>
+            <msp_unifeed>
+                <class>MSP_Unifeed_Block</class>
+            </msp_unifeed>
+        </blocks>
+
+        <helpers>
+            <msp_unifeed>
+                <class>MSP_Unifeed_Helper</class>
+            </msp_unifeed>
+        </helpers>
+
+        <resources>
+            <msp_unifeed_setup>
+                <setup>
+                    <module>MSP_Unifeed</module>
+                </setup>
+            </msp_unifeed_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <routers>
+            <msp_unifeed>
+                <use>standard</use>
+                <args>
+                    <module>MSP_Unifeed</module>
+                    <frontName>msp_unifeed</frontName>
+                </args>
+            </msp_unifeed>
+        </routers>
+    </frontend>
+
+    <admin>
+        <routers>
+            <msp_unifeedadm>
+                <use>admin</use>
+                <args>
+                    <module>MSP_Unifeed</module>
+                    <frontName>msp_unifeedadm</frontName>
+                </args>
+            </msp_unifeedadm>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <msp_unifeedadm>
+                    <files>
+                        <default>MSP_Unifeed.csv</default>
+                    </files>
+                </msp_unifeedadm>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <msp_unifeed translate="title" module="msp_unifeed">
+                                            <title>MSP Unifeed</title>
+                                            <sort_order>1000</sort_order>
+                                        </msp_unifeed>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        <catalog>
+                            <children>
+                                <msp_unifeed translate="title" module="msp_unifeed">
+                                    <title>MSP Unifeed</title>
+                                    <sort_order>1000</sort_order>
+                                    <children>
+                                        <msp_unifeed_template translate="title" module="msp_unifeed">
+                                            <title>Templates</title>
+                                            <sort_order>10</sort_order>
+                                        </msp_unifeed_template>
+                                        <msp_unifeed_feed translate="title" module="msp_unifeed">
+                                            <title>Feeds</title>
+                                            <sort_order>20</sort_order>
+                                        </msp_unifeed_feed>
+                                    </children>
+                                </msp_unifeed>
+                            </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <menu>
+            <catalog>
+                <children>
+                    <msp_unifeed translate="title" module="msp_unifeed">
+                        <title>MSP Unifeed</title>
+                        <sort_order>1000</sort_order>
+
+                        <children>
+                            <msp_unifeed_template translate="title" module="msp_unifeed">
+                                <title>Templates</title>
+                                <action>msp_unifeedadm/template/index</action>
+                                <sort_order>10</sort_order>
+                            </msp_unifeed_template>
+                            <msp_unifeed_feed translate="title" module="msp_unifeed">
+                                <title>Feeds</title>
+                                <action>msp_unifeedadm/feed/index</action>
+                                <sort_order>20</sort_order>
+                            </msp_unifeed_feed>
+                        </children>
+
+                    </msp_unifeed>
+                </children>
+            </catalog>
+        </menu>
+
+        <layout>
+            <updates>
+                <msp_unifeed module="msp_unifeed">
+                    <file>msp_unifeed.xml</file>
+                </msp_unifeed>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <default>
+        <msp_unifeed>
+            <general>
+                <enabled>1</enabled>
+                <daily-rebuild>1</daily-rebuild>
+            </general>
+        </msp_unifeed>
+    </default>
+    <crontab>
+        <jobs>
+            <msp_unifeed_rebuild>
+                <schedule>
+                    <cron_expr>0 22 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>msp_unifeed/observer::rebuildCatalog</model>
+                </run>
+            </msp_unifeed_rebuild>
+        </jobs>
+    </crontab>
+
+</config>

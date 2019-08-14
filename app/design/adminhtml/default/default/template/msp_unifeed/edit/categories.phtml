@@ -1,0 +1,90 @@
+<div class="tree-actions">
+	<a href="#" onclick="nodesTree.collapseAll(); return false;"><?php echo Mage::helper('msp_unifeed')->__('Collapse All'); ?></a>
+	<span class="separator">|</span>
+	<a href="#" onclick="nodesTree.expandAll(); return false;"><?php echo Mage::helper('msp_unifeed')->__('Expand All'); ?></a>
+</div>
+<br/>
+<div class="tree-holder">
+	<div id="tree-div" style="width:100%; overflow:auto;"></div>
+</div>
+
+<input type="hidden" name="categories" id="serializedCategories" value="null" />
+
+<script type="text/javascript">
+	var nodesTree;
+	var rootNode;
+	
+	function getRecursiveSelected(out, node)
+	{
+		try
+		{
+			if (node.getUI().checked()) out.push(node.id);
+		}
+		catch(e) {}
+	
+		if (node.childNodes.length)
+		{
+			for (var i=0; i<node.childNodes.length; i++)
+			{
+				out = getRecursiveSelected(out, node.childNodes[i]);
+			}
+		}
+		
+		return out;
+	}
+	
+	function doSave()
+	{
+		var sel=new Array();
+		sel = getRecursiveSelected(sel, rootNode);
+		
+		$('serializedCategories').value = sel.join(',');
+	}
+	
+	function nodeCheck(node, state)
+	{
+		if (node.childNodes.length)
+		{
+			for (var i = 0; i < node.childNodes.length; i++)
+			{
+				if (node.childNodes[i].getUI().checked()) continue;
+				node.childNodes[i].getUI().check(state, true);
+			}
+		}
+		
+		doSave();
+	}
+	
+	Ext.onReady(function() {
+		// Build loader
+		var treeLoader = new Ext.tree.CustomUITreeLoader({
+			dataUrl : '<?php echo $this->getTreeUrl() ?>',
+			baseAttr: {
+                uiProvider: Ext.tree.CheckboxNodeUI
+            }
+		});
+		
+		// Build tree
+		nodesTree = new Ext.tree.TreePanel('tree-div', {
+			animate			: true, 
+			loader			: treeLoader,
+			enableDD		: false,
+			rootVisible		: false,
+			containerScroll	: true
+		});
+		
+		// Build root
+		rootNode = new Ext.tree.AsyncTreeNode({
+			text		: '',
+			draggable	: false,
+			id			: '0'
+		});
+		
+		nodesTree.setRootNode(rootNode);
+		nodesTree.render();
+		rootNode.expand();
+		
+		// Events handler
+		nodesTree.on('check', nodeCheck);
+	});
+</script>

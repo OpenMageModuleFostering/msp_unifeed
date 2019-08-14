@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/MSP_Unifeed",
+    "type": "magento-module",
+    "license": "OSL",
+    "homepage": "",
+    "description": "Cookie Notice",
+    "authors": [
+    {
+        "name": "Riccardo Tempesta",
+        "email": "tempesta@idealiagroup.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

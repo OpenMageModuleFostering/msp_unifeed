@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+		<magespecialist translate="label" module="msp_unifeed">
+            <label>Magespecialist.it</label>
+            <sort_order>200</sort_order>
+		</magespecialist>
+    </tabs>
+    <sections>
+		<msp_unifeed translate="label" module="msp_unifeed">
+			<label>UniFeed</label>
+			<tab>magespecialist</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>10</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+							<label>Enable UniFeed</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</enabled>
+						<daily-rebuild translate="label">
+							<label>Daily rebuild</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>(starts at 10.00pm)</comment>
+						</daily-rebuild>
+					</fields>
+				</general>
+			</groups>
+        </msp_unifeed>
+    </sections>
+</config>
