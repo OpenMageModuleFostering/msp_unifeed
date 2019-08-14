@@ -1,3 +1,14 @@
+1.0.4
+
+Changes related to SUPEE-6788 
+
+1.0.3
+
+Added controller authorization check
+Standardization of shell script
+Modman and composer config
+Collection fix for 1.9
+
 1.0.2
 
 Bugfix release

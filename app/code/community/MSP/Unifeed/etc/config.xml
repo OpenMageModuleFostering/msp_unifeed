@@ -22,7 +22,7 @@
 <config>
     <modules>
         <MSP_Unifeed>
-            <version>1.0.2</version>
+            <version>1.0.4</version>
         </MSP_Unifeed>
     </modules>
 
@@ -87,13 +87,13 @@
 
     <admin>
         <routers>
-            <msp_unifeedadm>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>MSP_Unifeed</module>
-                    <frontName>msp_unifeedadm</frontName>
+                    <modules>
+                        <msp_unifeed before="Mage_Adminhtml">MSP_Unifeed_Adminhtml</msp_unifeed>
+                    </modules>
                 </args>
-            </msp_unifeedadm>
+            </adminhtml>
         </routers>
     </admin>
 
@@ -156,12 +156,12 @@
                         <children>
                             <msp_unifeed_template translate="title" module="msp_unifeed">
                                 <title>Templates</title>
-                                <action>msp_unifeedadm/template/index</action>
+                                <action>adminhtml/unifeed_template</action>
                                 <sort_order>10</sort_order>
                             </msp_unifeed_template>
                             <msp_unifeed_feed translate="title" module="msp_unifeed">
                                 <title>Feeds</title>
-                                <action>msp_unifeedadm/feed/index</action>
+                                <action>adminhtml/unifeed_feed</action>
                                 <sort_order>20</sort_order>
                             </msp_unifeed_feed>
                         </children>

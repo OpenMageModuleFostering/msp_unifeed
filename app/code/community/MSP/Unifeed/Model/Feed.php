@@ -136,6 +136,9 @@ class MSP_Unifeed_Model_Feed extends Mage_Core_Model_Abstract
         $store = $this->getStore();
         $collection = Mage::getModel('msp_unifeed/resource_catalog_eav_mysql4_product_collection');
 
+        // Fix for Magento 1.9
+        $collection->setStoreId($this->getStoreId());
+
         $visibility = array(
             Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
             Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG

@@ -18,8 +18,16 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-$magePath = dirname(dirname(__FILE__));
-require_once($magePath.'/app/Mage.php');
+require_once 'abstract.php';
 
-Mage::app('admin')->setUseSessionInUrl(false);
-Mage::getModel('msp_unifeed/feed')->buildAll();
+class MSP_Unifeed_Shell_Unifeed extends Mage_Shell_Abstract
+{
+    public function run()
+    {
+        Mage::app('admin')->setUseSessionInUrl(false);
+        Mage::getModel('msp_unifeed/feed')->buildAll();
+    }
+}
+
+$shell = new MSP_Unifeed_Shell_Unifeed();
+$shell->run();

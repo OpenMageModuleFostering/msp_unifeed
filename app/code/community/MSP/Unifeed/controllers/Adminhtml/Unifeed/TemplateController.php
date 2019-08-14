@@ -18,7 +18,7 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  
-class MSP_Unifeed_TemplateController extends Mage_Adminhtml_Controller_Action
+class MSP_Unifeed_Adminhtml_Unifeed_TemplateController extends Mage_Adminhtml_Controller_Action
 {
 	protected function _prapareAction()
 	{
@@ -39,6 +39,10 @@ class MSP_Unifeed_TemplateController extends Mage_Adminhtml_Controller_Action
 	protected function getFeed()
 	{
 		return Mage::registry('msp_unifeed_template_data');
+	}
+
+	protected function _isAllowed(){
+		return Mage::getSingleton('admin/session')->isAllowed('catalog/msp_unifeed/msp_unifeed_template');
 	}
 	
 	public function indexAction()

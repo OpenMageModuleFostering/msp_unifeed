@@ -1,0 +1,5 @@
+app/code/community/MSP/Unifeed  app/code/community/MSP/Unifeed
+app/design/adminhtml/default/default/layout/msp_unifeed.xml app/design/adminhtml/default/default/layout/msp_unifeed.xml
+app/design/adminhtml/default/default/template/msp_unifeed   app/design/adminhtml/default/default/template/msp_unifeed
+app/etc/modules/MSP_Unifeed.xml app/etc/modules/MSP_Unifeed.xml
+shell/unifeed.php   shell/unifeed.php
