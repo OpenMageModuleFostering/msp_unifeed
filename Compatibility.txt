@@ -1,0 +1,7 @@
+This file reports the compatibility table for this extension.
+If your Magento version is not included in this list you may try
+using the extension but AT YOUR OWN RISK.
+
+CE 1.7.X
+CE 1.8.x
+CE 1.9.1
