@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/MSP_Unifeed",
+    "name": "openmage-module-fostering\/msp_unifeed",
     "type": "magento-module",
-    "license": "OSL",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "UniFeed is an easy and flexible extension to create feeds in multiple formats.",
     "authors": [
