@@ -1,17 +1,22 @@
-# MSP Unifeed Magento extension
-==================
+## Original Package Description
 
-MSP Unifeed is an easy and flexible extension to create product feeds in multiple formats (csv, txt or xml) for any external platform which need to import your catalog.
-You can create feed models with your own syntax using a lot of available variables and directives to retrieve information about stores and products and parse it with conditional and programmable statements.
+UniFeed is an easy and flexible extension to create feeds in multiple formats.
 
-Extension's development is available on github here:
-https://github.com/magespecialist/MSP_Unifeed
-while Magento stable packages are available for free at MageSpecialist website here:  
-http://www.magespecialist.it/en/unifeed.html
 
-Quick programming reference is available at https://github.com/magespecialist/MSP_Unifeed/wiki/Quick-programming-reference
+## Disclaimer
 
-# Dependency notice
-Be sure to install MSP_Common magento extension **before** MSP Unifeed or your store could not work properly.
-You can install it via Magento Connect here: http://www.magentocommerce.com/magento-connect/msp-common.html
-(Ignore this dependency if you use composer to install the extension)
+This is a Repository imported from the Magento Marketplace, formerly known as Magento connect.
+The purpose is, to archive them in a permanent way, you can read more about it in our blogbost: https://openmage.github.io/2019/08/18/new-home-magento-connect-modules.html
+There is a chance, this repository misses some of the newer version.
+We rely on our users to inform us about newer Releases. And if they can provide them to us, this would be even better.
+
+### The original source is already on a public Git?
+
+Please also inform us about them, then we can mark our repository as discontinued and refer to the other Repository.
+
+### Contact us
+
+the easiest way is to create an Issue here, we have an eye on them.
+
+Alternative you can try to contact @Flyingmana directly.
+ 

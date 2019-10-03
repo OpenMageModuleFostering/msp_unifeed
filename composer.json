@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/MSP_Unifeed",
+    "name": "OpenMageModuleFostering\/MSP_Unifeed",
     "type": "magento-module",
     "license": "OSL",
     "homepage": "",
     "description": "UniFeed is an easy and flexible extension to create feeds in multiple formats.",
     "authors": [
-    {
-        "name": "Riccardo Tempesta",
-        "email": "tempesta@idealiagroup.com"
-    }
-],
+        {
+            "name": "Riccardo Tempesta",
+            "email": "tempesta@idealiagroup.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
